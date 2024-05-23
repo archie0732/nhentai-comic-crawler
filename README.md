@@ -43,3 +43,22 @@ npm i cli-progress
 
 下載完後會把檔案放在`./data_save/comic/{今天的日期}/`
 然後會再產生一個**紀錄檔** 路徑:`./data_save/report/{今天的日期}`，用以紀錄下載漫畫時的狀態
+
+
+#### 4.關於狀態碼
+
+1. `404 not found `: 找不到該本子(可能ID輸入錯誤或該本已被刪除)
+2. `403 forbidden`: cookie 或user-agent 過期需要修 
+
+> 修改方法:
+> 到`./work/user_login.js`裡:  
+> 修改`User-Agent` 跟 `Cookie`
+```js
+const Headers = {
+  "User-Agent":
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0",
+  Cookie:
+    "csrftoken=EJ0TNWV1Ig71xNDmPMooX8UWuGWEUjHVz6YyY3j42QqRSBQdYoIK1oqDc7JZWXDC; sessionid=4fthg86fvtfmsz6u1qz0bbmn2k597ef3",
+};
+```
+> 進入`nhentia`官網==>F12 ==> network ==> 把`要求標頭`裡的兩個(Cookie、User-Agent) 複製==>修改
