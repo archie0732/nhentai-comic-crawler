@@ -194,7 +194,7 @@ class nweb_Downloader {
     console.log(`❌ failed download count: ${fail}`);
     console.log(`🔍 veiw comic: ${window.location.pathname}`);
   }
-  get option() {
+  get option_show() {
     return this.data;
   }
 }
@@ -207,5 +207,5 @@ p = {
   path: "./comic_test/",
 };
 
-const a = new nweb_Downloader(p);
-a.album_Downloader("504189");
+//const a = new nweb_Downloader(p);
+//a.album_Downloader("504189");
