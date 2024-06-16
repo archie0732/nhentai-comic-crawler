@@ -3,6 +3,11 @@ download comic on nhentia by use comic ID
 
 * 可下載`nhentia`上的漫畫藉由`神奇小數字`
 
+### 正在處理
+* 資料夾問題
+* npm 發布
+* md 更新
+
 ### 1.事情準備(用github action 可以跳到3.)
 
 1. 確保電腦已有`node.js`
