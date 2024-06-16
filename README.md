@@ -1,12 +1,6 @@
 # nhentia-comic-crawler
 download comic on nhentia by use comic ID
 
-### 更新日誌(目前: 維護中)
-|日期|更新內容|備註|
-|----|-------|----|
-|2024-06-16|定期維護||
-
-
 * 可下載`nhentia`上的漫畫藉由`神奇小數字`
 
 ### 1.事情準備(用github action 可以跳到3.)
@@ -67,3 +61,8 @@ const Headers = {
 };
 ```
 > 進入`nhentia`官網==>F12 ==> network ==> 把`要求標頭`裡的兩個(Cookie、User-Agent) 複製==>修改
+
+### 更新日誌(目前: 維護中)
+|日期|更新內容|備註|
+|----|-------|----|
+|2024-06-16|定期維護||
