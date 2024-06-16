@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^3.3.2"
+  },
+  "name": "nweb_downloader",
+  "version": "1.0.1",
+  "description": "u can easy to download nhentia comic by use this module!",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nhentia"
+  ],
+  "author": "archie0732",
+  "license": "ISC"
+}
