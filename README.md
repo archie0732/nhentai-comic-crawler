@@ -40,7 +40,7 @@ nweb.album_download('#504189');// 放入番號數字，有沒有#都可以
 
 ```js
 const nweb = new nweb_download();
-const albums = ['#504189',"#300800"]
+const albums = ['#504189',"#300800"]// " 與 ' 都可以
 nweb.all_album_downloader(albums)
 ```
 
