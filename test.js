@@ -1,5 +1,8 @@
-const nweb_Downloader = require("./index");
+const nweb_Downloader = require("./src/index");
 
-const uu = new nweb_Downloader();
-uu.option_show;
-uu.album_Downloader("504189");
+option = {
+  path: "./comic_test/",
+};
+
+const a = new nweb_Downloader(option);
+a.album_Downloader("504189");

@@ -1,4 +1,5 @@
 const axios = require("axios");
+const path = require("path");
 const cheerio = require("cheerio");
 const fs = require("fs");
 
@@ -109,7 +110,7 @@ class nweb_Downloader {
     enterdata = {}
   ) {
     const defaultData = {
-      path: "./",
+      path: __dirname + "/",
       headers: new nweb_Loagin().getheaders,
     };
     this.data = {
@@ -192,7 +193,7 @@ class nweb_Downloader {
     console.log(`✅ number of successes: ${sucess}`);
     const fail = download_queue.length - sucess;
     console.log(`❌ failed download count: ${fail}`);
-    console.log(`🔍 veiw comic: ${window.location.pathname}`);
+    console.log(`🔍 veiw comic: ${__dirname}`);
   }
   get option_show() {
     return this.data;
@@ -203,9 +204,3 @@ module.exports = nweb_Downloader;
 
 // test area
 // 504189
-p = {
-  path: "./comic_test/",
-};
-
-//const a = new nweb_Downloader(p);
-//a.album_Downloader("504189");
