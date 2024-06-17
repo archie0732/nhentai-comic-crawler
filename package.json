@@ -7,7 +7,7 @@
   "name": "nhentia_downloader",
   "version": "2.0.2",
   "description": "u can easy to download nhentia comic by use this module!",
-  "main": "index.js",
+  "main": "./src/index.js",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
