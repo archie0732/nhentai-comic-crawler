@@ -16,5 +16,13 @@
     "nhentia"
   ],
   "author": "archie0732",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/archie0732/nhentia-comic-crawler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/archie0732/nhentia-comic-crawler/issues"
+  },
+  "homepage": "https://github.com/archie0732/nhentia-comic-crawler#readme"
 }
