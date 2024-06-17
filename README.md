@@ -2,7 +2,12 @@
 
 一個可以透過簡單的`node.js`來達成下載漫畫的程式
 
-* 更新日誌(目前: 維護中)
+## 提供功能
+* download comic on nhentia by use comic ID
+* 可下載`nhentia`上的漫畫藉由`神奇小數字`
+
+
+### 更新日誌(目前: 維護中)
 
 |日期|內容|更新、維護內容|
 |----|-------|----|
@@ -11,8 +16,7 @@
 
 ***
 
-* download comic on nhentia by use comic ID
-* 可下載`nhentia`上的漫畫藉由`神奇小數字`
+
 
 ## 正在處理
 
