@@ -13,7 +13,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "nhentia"
+    "nhentia",
+    "nhentia api",
+    "comic",
+    "download"
   ],
   "author": "archie0732",
   "license": "ISC",
