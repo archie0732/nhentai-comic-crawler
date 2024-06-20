@@ -110,7 +110,7 @@ class nweb_Downloader {
     enterdata = {}
   ) {
     const defaultData = {
-      path: __dirname + "/",
+      path: "./",
       headers: new nweb_Loagin().getheaders,
     };
     this.data = {
@@ -193,7 +193,6 @@ class nweb_Downloader {
     console.log(`✅ number of successes: ${sucess}`);
     const fail = download_queue.length - sucess;
     console.log(`❌ failed download count: ${fail}`);
-    console.log(`🔍 veiw comic: ${__dirname}`);
   }
   get option_show() {
     return this.data;
