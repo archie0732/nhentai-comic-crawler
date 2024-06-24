@@ -5,7 +5,7 @@
     "node-fetch": "^3.3.2"
   },
   "name": "nhentia_downloader",
-  "version": "2.0.3",
+  "version": "2.0.6",
   "description": "u can easy to download nhentia comic by use this module!",
   "main": "src/index.js",
   "devDependencies": {},

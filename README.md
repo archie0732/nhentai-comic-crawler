@@ -16,7 +16,7 @@ A program for downloading comics using simple `node.js`
 |2024-05-30|v1.0.1 ~ v1.0.2|Regular maintenance|
 |2024-06-17|v2.0.1 ~ v2.0.2|Refactored code for better scalability, added npm support|
 |2024-06-20|v2.0.3 ~ v2.0.4|Updated documentation, fixed issue where comics were downloaded into node_modules|
-|2024-06-24|v2.0.5|Upadte English version document|
+|2024-06-24|v2.0.5 ~ v2.0.6|Upadte English version document,and fix some promble|
 
 ***
 
@@ -57,12 +57,7 @@ nweb.all_album_downloader(albums)
 
 Currently available options:
 
-> * 更改下載路徑
-> * 更改`user agent`
-
-**其他功能還在時裝中，請在稍等**  
-
-* Change download path
+* 1. Change download path
 
 ```js
 option={
@@ -71,7 +66,7 @@ option={
 const nweb = new nweb_download(option);
 ```
 
-* Change user agent
+* 2. Change user agent
 
 ```js
 option={
