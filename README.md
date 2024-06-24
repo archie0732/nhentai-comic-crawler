@@ -1,98 +1,101 @@
 # nhentia-comic-crawler
 
-一個可以透過簡單的`node.js`來達成下載漫畫的程式
+A program for downloading comics using simple `node.js`
 
-## 提供功能
+[the Chinese document / 中文版文檔]('./chinese_readme.md')
+
+## Features
+
 * download comic on nhentia by use comic ID
-* 可下載`nhentia`上的漫畫藉由`神奇小數字`
 
+### Update Log (Current Status: Maintenance)
 
-### 更新日誌(目前: 維護中)
-
-|日期|內容|更新、維護內容|
+|Date|Version|Updates and Maintenance|
 |----|-------|----|
-|2024-05-23|v1.0.0|X|
-|2024-05-30|v1.0.1 ~ v1.0.2|定期維護|
-|2024-06-17|v2.0.1 ~ v2.0.2|將code改為更能擴展的方式，支援npm 下載|
-|2024-06-20|v2.0.3 ~ v2.0.4|更新文檔，修復漫畫下載會跑到node_module裡的問題|
+|2024-05-23|v1.0.0|Initial release|
+|2024-05-30|v1.0.1 ~ v1.0.2|Regular maintenance|
+|2024-06-17|v2.0.1 ~ v2.0.2|Refactored code for better scalability, added npm support|
+|2024-06-20|v2.0.3 ~ v2.0.4|Updated documentation, fixed issue where comics were downloaded into node_modules|
+|2024-06-24|v2.0.5|Upadte English version document|
 
 ***
 
+## In Progress
 
+*Login and Favorites
 
-## 正在處理
+### Preparation
 
-* 登入與收藏
+1. Ensure `node.js` is installed on your computer
+2. Install the necessary package from npm
 
-### 事情準備(用github action 可以跳到3.)
+```bash
+npm i nhentia_downloader
+```
 
-1. 確保電腦已有`node.js`
-2. 去`npm`安裝套件
+### Quick Start (Copy the code below according to your needs after installing the package)
 
-### 快速使用(確保以下載該套件後，根據需求複製下面程式碼)
-
-* 下載單本
+* Download a single comic
 
 ```js
 const nweb_Downloader = require("nhentia_downloader");
 const nweb = new nweb_Downloader();
-nweb.album_Downloader("#504189");// 放入番號數字，有沒有#都可以
+nweb.album_Downloader("#504189"); // Insert the comic ID, with or without the #
 
 ```
   
-* 下載多本
+* Download multiple comics
 
 ```js
 const nweb_Downloader = require('nweb_Downloader');
 const nweb = new nweb_Downloader();
-const albums = ['#504189',"#300800"]// " 與 ' 都可以
+const albums = ['#504189',"#300800"]// Both " and ' can be used
 nweb.all_album_downloader(albums)
 ```
 
-### 自訂義套件
+### Customizing the Package
 
-目前提供
+Currently available options:
 
 > * 更改下載路徑
 > * 更改`user agent`
 
 **其他功能還在時裝中，請在稍等**  
 
-* 更改(漫畫下載)路徑
+* Change download path
 
 ```js
 option={
-  path:'D:/a/b' // 你要設定的路徑
+  path:'D:/a/b'  // Set your desired path
 }
-const nweb = new nweb_download(option);//把option 加入class 預設設定中
-// 後續動作，如上面示例
+const nweb = new nweb_download(option);
 ```
 
-* 更改headers  
+* Change user agent
 
 ```js
 option={
   "headers":{
-    "User-Agent":"<你要設定的user-agent>",
-    "Cookie":"<你要設定的cookie>"
+    "User-Agent":"<your user-agent>",
+    "Cookie":"<your cookie>"
   }
 }
 const nweb = new nweb_download(option);
 ```
 
-* 理論上，更多的功能選擇都會放在`option`裡，查看option
+* More features will be added to `option`, to view `options`
 
 ```js
 const nweb = new nweb_downloader();
 console.log(nweb.option_show);
 ```
 
-### 其他
+### Miscellaneous
 
-目前還在實裝其他更方便的功能，項目目前也處於維護狀態
+Other convenient features are under development, and the project is currently in maintenance.
 
-使用後有任何的問題或任何的意見歡迎在issues提供
+If you have any questions or suggestions, please provide them in the issues section.
 
-本項目僅供研究、學術用途，不得進行商業營利
+This project is for research and academic purposes only and is not intended for commercial use.
 
-**作者:archie0732**
+#### Author: archie0732
