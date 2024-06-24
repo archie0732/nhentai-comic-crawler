@@ -2,6 +2,7 @@ const axios = require("axios");
 const path = require("path");
 const cheerio = require("cheerio");
 const fs = require("fs");
+const { versions } = require("process");
 
 class nweb_Loagin {
   constructor(
@@ -85,6 +86,31 @@ class nweb_Information {
         fileFormat: "unknow",
         status: "❌ comic status: " + error.response.status,
       };
+    }
+  }
+  // #515931
+  async fetch_detail_information(get_all_tag = false) {
+    const url = "https://nhentai.net/g/" + this.id + "/";
+    const basic_data = await this.fetch_BasicInformation();
+
+    try {
+      const res = await axios.get(url, { headers: Headers });
+      const $ = cheerio.load(res.data);
+      basic_data["main_title"] = $(".title").text();
+      basic_data["favorite_num"] = $(".buttons")
+        .find("span .nobold")
+        .text()
+        .replace("(", "")
+        .replace(")", "");
+      basic_data["uploadedTime"] = $(
+        '#tags .tag-container:contains("Uploaded:") .tags time'
+      )
+        .first()
+        .text()
+        .trim();
+    } catch (error) {
+      console.log(error);
+      return basic_data;
     }
   }
   downloadedTime() {
