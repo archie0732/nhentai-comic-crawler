@@ -2,6 +2,8 @@
 
 一個可以透過簡單的`node.js`來達成下載漫畫的程式
 
+[back to English version / 英文版文檔](./README.md)
+
 ## 提供功能
 * download comic on nhentia by use comic ID
 * 可下載`nhentia`上的漫畫藉由`神奇小數字`

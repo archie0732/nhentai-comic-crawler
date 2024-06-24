@@ -2,7 +2,7 @@
 
 A program for downloading comics using simple `node.js`
 
-[the Chinese document / 中文版文檔]('./chinese_readme.md')
+[the Chinese document / 中文版文檔](./chinese_readme.md)
 
 ## Features
 
