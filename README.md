@@ -14,7 +14,7 @@
 |2024-05-23|v1.0.0|X|
 |2024-05-30|v1.0.1 ~ v1.0.2|定期維護|
 |2024-06-17|v2.0.1 ~ v2.0.2|將code改為更能擴展的方式，支援npm 下載|
-|2024-06-20|v2.0.3|更新文檔，修復漫畫下載會跑到node_module裡的問題|
+|2024-06-20|v2.0.3 ~ v2.0.4|更新文檔，修復漫畫下載會跑到node_module裡的問題|
 
 ***
 
@@ -35,9 +35,7 @@
 
 ```js
 const nweb_Downloader = require("nhentia_downloader");
-
 const nweb = new nweb_Downloader();
-
 nweb.album_Downloader("#504189");// 放入番號數字，有沒有#都可以
 
 ```
@@ -66,7 +64,8 @@ nweb.all_album_downloader(albums)
 option={
   path:'D:/a/b' // 你要設定的路徑
 }
-const nweb = new nweb_download(option);
+const nweb = new nweb_download(option);//把option 加入class 預設設定中
+// 後續動作，如上面示例
 ```
 
 * 更改headers  
