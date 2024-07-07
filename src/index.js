@@ -53,4 +53,25 @@ async function about_comic(
   }
 }
 
-module.exports = { comic_download, about_comic };
+function option_show(s = "") {
+  switch (s) {
+    case "about_comic":
+      console.log({
+        headers: {
+          "User-Agent": "",
+        },
+      });
+      break;
+    case "comic_download":
+      console.log({
+        header: { "User-Agent": "" },
+        download_path: "./",
+        print_downloader_result: false,
+      });
+
+    default:
+      break;
+  }
+}
+
+module.exports = { comic_download, about_comic, option_show };
