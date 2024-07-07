@@ -17,6 +17,7 @@ A program for downloading comics using simple `node.js`
 |2024-06-17|v2.0.1 ~ v2.0.2|Refactored code for better scalability, added npm support|
 |2024-06-20|v2.0.3 ~ v2.0.4|Updated documentation, fixed issue where comics were downloaded into node_modules|
 |2024-06-24|v2.0.5 ~ v2.0.6|Upadte English version document,and fix some promble|
+|2024-07-07|v2.0.7|fix the document name error|
 
 ***
 
