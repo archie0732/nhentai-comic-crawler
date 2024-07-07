@@ -5,7 +5,8 @@
 > ## The old package has been deprecated
 >
 > ```bash
->npm i nhentia_downloader
+> # do not use this!!
+>npm i nhentia_downloader 
 >```
 >
 > because of name error
