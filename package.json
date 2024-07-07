@@ -4,17 +4,17 @@
     "cheerio": "^1.0.0-rc.12",
     "node-fetch": "^3.3.2"
   },
-  "name": "nhentia_downloader",
-  "version": "2.0.6",
-  "description": "u can easy to download nhentia comic by use this module!",
+  "name": "nhentai_downloader",
+  "version": "2.0.7",
+  "description": "u can easy to download nhentai comic by use this module!",
   "main": "src/index.js",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "nhentia",
-    "nhentia api",
+    "nhentai",
+    "nhentai api",
     "comic",
     "download"
   ],
@@ -22,10 +22,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/archie0732/nhentia-comic-crawler.git"
+    "url": "git+https://github.com/archie0732/nhentai-comic-crawler.git"
   },
   "bugs": {
-    "url": "https://github.com/archie0732/nhentia-comic-crawler/issues"
+    "url": "https://github.com/archie0732/nhentai-comic-crawler/issues"
   },
-  "homepage": "https://github.com/archie0732/nhentia-comic-crawler#readme"
+  "homepage": "https://github.com/archie0732/nhentai-comic-crawler#readme"
 }
