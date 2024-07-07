@@ -3,7 +3,7 @@ const information = require("./information");
 
 async function comic_download(ids = [], default_options = {}) {
   const options = {
-    header: {
+    headers: {
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0",
       ...default_options.header,
@@ -22,11 +22,11 @@ async function comic_download(ids = [], default_options = {}) {
         await comic_download(id, options);
       }
     } else {
-      const comic_info = await information(ids, options.header);
+      const comic_info = await information(ids, options.headers);
       const download_data = await downloader(
         comic_info,
         options.download_path,
-        options.header
+        options.headers
       );
       if (options.print_downloader_result) {
         console.log(download_data);
@@ -64,7 +64,7 @@ function option_show(s = "") {
       break;
     case "comic_download":
       console.log({
-        header: { "User-Agent": "" },
+        headers: { "User-Agent": "" },
         download_path: "./",
         print_downloader_result: false,
       });

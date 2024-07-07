@@ -34,6 +34,7 @@
 |2024-06-20|v2.0.3 ~ v2.0.4|更新文檔，修復漫畫下載會跑到node_module裡的問題|
 |2024-06-24|v2.0.5 ~ v2.0.6|新增英文文檔，修復一些小問題|
 |2024-07-07|v2.0.7 ~ v2.0.8|修正文檔拼寫錯誤|
+|2024-07-07|v2.1.0 ~ v2.0.2|取消用class，讓程式看起來更簡化與易讀|
 
 ***
 
@@ -55,19 +56,17 @@ npm i new_nhentai_downloader
 * 下載單本
 
 ```js
-const nweb_Downloader = require("new_nhentai_downloader");
-const nweb = new nweb_Downloader();
-nweb.album_Downloader("#504189");// 放入番號數字，有沒有#都可以
+const nweb = require("new_nhentai_downloader");
+nweb.comic_download("#504189");// 放入番號數字，有沒有#都可以
 
 ```
   
 * 下載多本
 
 ```js
-const nweb_Downloader = require('new_nhentai_downloader');
-const nweb = new nweb_Downloader();
-const albums = ['#504189',"#300800"]// " 與 ' 都可以
-nweb.all_album_downloader(albums)
+const nweb = require("new_nhentai_downloader");
+const albums = ["#504189","22222"]
+nweb.comic_download(albums);// 放入番號數字，有沒有#都可以
 ```
 
 ### 自訂義套件
@@ -76,36 +75,46 @@ nweb.all_album_downloader(albums)
 
 > * 更改下載路徑
 > * 更改`user agent`
+> * 打印下載結果(預設是`false`)
 
 **其他功能還在時裝中，請在稍等**  
 
 * 更改(漫畫下載)路徑
 
 ```js
-option={
-  path:'D:/a/b' // 你要設定的路徑
-}
-const nweb = new nweb_download(option);//把option 加入class 預設設定中
-// 後續動作，如上面示例
+nweb.comic_download("#504189",{download_path:'./a/b'});
 ```
 
 * 更改headers  
 
 ```js
-option={
-  "headers":{
-    "User-Agent":"<你的user-agent>",
-    "Cookie":"<你的cookie>"
-  }
+nweb.comic_download("#504189",{headers:{
+  'User-Agent':'<你的headers>'
+}})
+```
+
+option 套件:
+
+```json
+{
+  headers:{
+    'User-Agent':'',
+  },
+  download_path:'./',
+  print_download_result:false,
 }
-const nweb = new nweb_download(option);
+```
+
+### 查詢漫畫資訊
+
+```js
+nweb.about_comic('#1111');
 ```
 
 * 理論上，更多的功能選擇都會放在`option`裡，查看option
 
 ```js
-const nweb = new nweb_downloader();
-console.log(nweb.option_show);
+nweb.option_show('<要查詢方法>');
 ```
 
 ### 其他

@@ -33,6 +33,7 @@ A program for downloading comics using simple `node.js`
 |2024-06-20|v2.0.3 ~ v2.0.4|Updated documentation, fixed issue where comics were downloaded into node_modules|
 |2024-06-24|v2.0.5 ~ v2.0.6|Upadte English version document,and fix some promble|
 |2024-07-07|v2.0.7 ~ v2.0.8|fix the document name error|
+|2024-07-07|v2.1.0 ~ v2.1.2|Avoiding the use of classes to make the code more readable and simplified|
 
 ***
 
@@ -54,52 +55,73 @@ npm i new_nhentai_downloader
 * Download a single comic
 
 ```js
-const nweb_Downloader = require("new_nhentai_downloader");
-const nweb = new nweb_Downloader();
-nweb.album_Downloader("#504189"); // Insert the comic ID, with or without the #
+const nweb = require("new_nhentai_downloader");
+nweb.comic_download("#504189"); // Insert the comic ID, with or without the #
 
 ```
   
 * Download multiple comics
 
 ```js
-const nweb_Downloader = require('new_nhentai_downloader');
-const nweb = new nweb_Downloader();
+const nweb = require('new_nhentai_downloader');
 const albums = ['#504189',"#300800"]// Both " and ' can be used
-nweb.all_album_downloader(albums)
+nweb.comic_download(albums)
+```
+
+or,u can do this
+
+```js
+const nweb = require('new_nhentai_downloader');
+nweb.comic_download(['#504189','#300800']);
 ```
 
 ### Customizing the Package
 
 Currently available options:
 
-* 1. Change download path
+* 1. custom download path  
 
 ```js
-option={
-  path:'D:/a/b'  // Set your desired path
-}
-const nweb = new nweb_download(option);
+nweb.comic_downloade('#504189',{download_path:'./a/b/'});
 ```
 
 * 2. Change user agent
 
 ```js
-option={
-  "headers":{
-    "User-Agent":"<your user-agent>",
-    "Cookie":"<your cookie>"
-  }
-}
-const nweb = new nweb_download(option);
+nweb.comic_download('#504189',{headers:'<u headers>'});
+```
+
+of cause, you also can do this:
+
+```js
+nweb.comic_download('504189',{download_path:'<path>',headers:'<headers>'});
+```
+
+### get comic information
+
+maybe you just want to know about comic basic information:
+
+```js
+nweb.about_comic('#11111');
 ```
 
 * More features will be added to `option`, to view `options`
 
 ```js
-const nweb = new nweb_downloader();
-console.log(nweb.option_show);
+nweb.option_show("<u want to know the option's method name>");
 ```
+
+about the `comic_download` method option:
+
+```json
+{
+  headers:{
+    User-Agent:''
+  },
+  download_path:'./',
+  print_download_result:false,
+}
+
 
 ### Miscellaneous
 
