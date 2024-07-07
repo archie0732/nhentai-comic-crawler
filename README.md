@@ -5,6 +5,7 @@ A program for downloading comics using simple `node.js`
 >[!Note]  
 >
 > ## The old package has been deprecated
+>
 > now u can use the new version to download comic!!
 
 ```bash
@@ -124,6 +125,7 @@ about the `comic_download` method option:
 }
 
 ```
+
 ### Miscellaneous
 
 Other convenient features are under development, and the project is currently in maintenance.

@@ -5,6 +5,7 @@
 >[!Note]  
 >
 > ## 舊套件以廢棄
+>
 >而現在能使用新版下載套件了!!
 >
 > ```bash
@@ -17,8 +18,6 @@
 > ```bash
 > npm i new_nhentai_downloader
 >```
-
-
 
 [back to English version / 英文版文檔](./README.md)
 
