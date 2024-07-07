@@ -4,8 +4,8 @@
 >
 > ## The old package has been deprecated
 >
-> ```bash
-> # do not use this!!
+>```bash
+># do not use this!!
 >npm i nhentia_downloader 
 >```
 >
@@ -13,6 +13,7 @@
 >please change npm command:
 >
 > ```bash
+> #use this command
 > npm i new_nhentai_downloader
 >```
 
