@@ -5,6 +5,7 @@
 >[!Note]  
 >
 > ## 舊套件以廢棄
+>而現在能使用新版下載套件了!!
 >
 > ```bash
 >npm i nhentia_downloader
