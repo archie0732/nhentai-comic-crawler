@@ -1,8 +1,11 @@
 # nhentai-comic-crawler
 
+A program for downloading comics using simple `node.js`
+
 >[!Note]  
 >
 > ## The old package has been deprecated
+> now u can use the new version to download comic!!
 
 ```bash
 # the old command,do not use this
@@ -14,9 +17,6 @@ npm i nhentia_downloader
 ```bash
 npm i new_nhentai_downloader
 ```
-
-
-A program for downloading comics using simple `node.js`
 
 [the Chinese document / 中文版文檔](./chinese_readme.md)
 
