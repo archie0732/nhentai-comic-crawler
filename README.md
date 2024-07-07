@@ -122,7 +122,7 @@ about the `comic_download` method option:
   print_download_result:false,
 }
 
-
+```
 ### Miscellaneous
 
 Other convenient features are under development, and the project is currently in maintenance.
