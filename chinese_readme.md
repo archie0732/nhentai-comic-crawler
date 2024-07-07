@@ -1,4 +1,4 @@
-# nhentia-comic-crawler
+# nhentai-comic-crawler
 
 一個可以透過簡單的`node.js`來達成下載漫畫的程式
 
@@ -6,8 +6,8 @@
 
 ## 提供功能
 
-* download comic on nhentia by use comic ID
-* 可下載`nhentia`上的漫畫藉由`神奇小數字`
+* download comic on nhentai by use comic ID
+* 可下載`nhentai`上的漫畫藉由`神奇小數字`
 
 ### 更新日誌(目前: 維護中)
 
@@ -31,7 +31,7 @@
 2. 去`npm`安裝套件
 
 ```bash
-npm i nhentia_downloader
+npm i nhentai_downloader
 ```
 
 ### 快速使用(確保以下載該套件後，根據需求複製下面程式碼)
@@ -39,7 +39,7 @@ npm i nhentia_downloader
 * 下載單本
 
 ```js
-const nweb_Downloader = require("nhentia_downloader");
+const nweb_Downloader = require("nhentai_downloader");
 const nweb = new nweb_Downloader();
 nweb.album_Downloader("#504189");// 放入番號數字，有沒有#都可以
 
