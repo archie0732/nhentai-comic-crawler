@@ -1,5 +1,20 @@
 # nhentai-comic-crawler
 
+>[!Note]  
+>
+> ## 舊套件以廢棄
+>
+> ```bash
+>npm i nhentia_downloader
+>```
+>
+>因為命名錯誤
+>請更改npm 下載指令:
+>
+> ```bash
+> npm i nhentai_downloader
+>``
+
 一個可以透過簡單的`node.js`來達成下載漫畫的程式
 
 [back to English version / 英文版文檔](./README.md)

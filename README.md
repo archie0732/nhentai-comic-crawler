@@ -1,5 +1,20 @@
 # nhentai-comic-crawler
 
+>[!Note]  
+>
+> ## The old package has been deprecated
+>
+> ```bash
+>npm i nhentia_downloader
+>```
+>
+> because of name error
+>please change npm command:
+>
+> ```bash
+> npm i nhentai_downloader
+>```
+
 A program for downloading comics using simple `node.js`
 
 [the Chinese document / 中文版文檔](./chinese_readme.md)
