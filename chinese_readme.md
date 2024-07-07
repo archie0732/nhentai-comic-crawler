@@ -97,12 +97,13 @@ option 套件:
 
 ```json
 {
-  headers:{
-    'User-Agent':'',
+  "headers":{
+    "User-Agent":"",
   },
-  download_path:'./',
-  print_download_result:false,
+  "download_path":"./",
+  "print_download_result":false,
 }
+
 ```
 
 ### 查詢漫畫資訊
