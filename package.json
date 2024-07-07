@@ -4,8 +4,8 @@
     "cheerio": "^1.0.0-rc.12",
     "node-fetch": "^3.3.2"
   },
-  "name": "@archie0732/nhentai_downloader",
-  "version": "2.0.7",
+  "name": "new_nhentai_downloader",
+  "version": "2.0.8",
   "description": "u can easy to download nhentai comic by use this module!",
   "main": "src/index.js",
   "devDependencies": {},
@@ -16,7 +16,8 @@
     "nhentai",
     "nhentai api",
     "comic",
-    "download"
+    "download",
+    "nhentai downloader"
   ],
   "author": "archie0732",
   "license": "ISC",

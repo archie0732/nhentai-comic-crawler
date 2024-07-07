@@ -12,7 +12,7 @@
 >請更改npm 下載指令:
 >
 > ```bash
-> npm i nhentai_downloader
+> npm i new_nhentai_downloader
 >``
 
 一個可以透過簡單的`node.js`來達成下載漫畫的程式
@@ -33,7 +33,7 @@
 |2024-06-17|v2.0.1 ~ v2.0.2|將code改為更能擴展的方式，支援npm 下載|
 |2024-06-20|v2.0.3 ~ v2.0.4|更新文檔，修復漫畫下載會跑到node_module裡的問題|
 |2024-06-24|v2.0.5 ~ v2.0.6|新增英文文檔，修復一些小問題|
-|2024-07-07|v2.0.7|修正文檔拼寫錯誤|
+|2024-07-07|v2.0.7 ~ v2.0.8|修正文檔拼寫錯誤|
 
 ***
 
@@ -47,7 +47,7 @@
 2. 去`npm`安裝套件
 
 ```bash
-npm i nhentai_downloader
+npm i new_nhentai_downloader
 ```
 
 ### 快速使用(確保以下載該套件後，根據需求複製下面程式碼)
@@ -55,7 +55,7 @@ npm i nhentai_downloader
 * 下載單本
 
 ```js
-const nweb_Downloader = require("nhentai_downloader");
+const nweb_Downloader = require("new_nhentai_downloader");
 const nweb = new nweb_Downloader();
 nweb.album_Downloader("#504189");// 放入番號數字，有沒有#都可以
 
@@ -64,7 +64,7 @@ nweb.album_Downloader("#504189");// 放入番號數字，有沒有#都可以
 * 下載多本
 
 ```js
-const nweb_Downloader = require('nweb_Downloader');
+const nweb_Downloader = require('new_nhentai_downloader');
 const nweb = new nweb_Downloader();
 const albums = ['#504189',"#300800"]// " 與 ' 都可以
 nweb.all_album_downloader(albums)

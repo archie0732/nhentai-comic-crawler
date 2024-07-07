@@ -12,7 +12,7 @@
 >please change npm command:
 >
 > ```bash
-> npm i nhentai_downloader
+> npm i new_nhentai_downloader
 >```
 
 A program for downloading comics using simple `node.js`
@@ -32,7 +32,7 @@ A program for downloading comics using simple `node.js`
 |2024-06-17|v2.0.1 ~ v2.0.2|Refactored code for better scalability, added npm support|
 |2024-06-20|v2.0.3 ~ v2.0.4|Updated documentation, fixed issue where comics were downloaded into node_modules|
 |2024-06-24|v2.0.5 ~ v2.0.6|Upadte English version document,and fix some promble|
-|2024-07-07|v2.0.7|fix the document name error|
+|2024-07-07|v2.0.7 ~ v2.0.8|fix the document name error|
 
 ***
 
@@ -46,7 +46,7 @@ A program for downloading comics using simple `node.js`
 2. Install the necessary package from npm
 
 ```bash
-npm i nhentai_downloader
+npm i new_nhentai_downloader
 ```
 
 ### Quick Start (Copy the code below according to your needs after installing the package)
@@ -54,7 +54,7 @@ npm i nhentai_downloader
 * Download a single comic
 
 ```js
-const nweb_Downloader = require("nhentai_downloader");
+const nweb_Downloader = require("new_nhentai_downloader");
 const nweb = new nweb_Downloader();
 nweb.album_Downloader("#504189"); // Insert the comic ID, with or without the #
 
@@ -63,7 +63,7 @@ nweb.album_Downloader("#504189"); // Insert the comic ID, with or without the #
 * Download multiple comics
 
 ```js
-const nweb_Downloader = require('nweb_Downloader');
+const nweb_Downloader = require('new_nhentai_downloader');
 const nweb = new nweb_Downloader();
 const albums = ['#504189',"#300800"]// Both " and ' can be used
 nweb.all_album_downloader(albums)
