@@ -3,19 +3,18 @@
 >[!Note]  
 >
 > ## The old package has been deprecated
->
->```bash
-># do not use this!!
->npm i nhentia_downloader 
->```
->
-> because of name error
->please change npm command:
->
-> ```bash
-> #use this command
-> npm i new_nhentai_downloader
->```
+
+```bash
+# the old command,do not use this
+npm i nhentia_downloader
+```
+
+* use the new command
+
+```bash
+npm i new_nhentai_downloader
+```
+
 
 A program for downloading comics using simple `node.js`
 
