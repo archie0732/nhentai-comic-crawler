@@ -115,11 +115,11 @@ about the `comic_download` method option:
 
 ```json
 {
-  headers:{
-    User-Agent:''
+  "headers":{
+    "User-Agent":"",
   },
-  download_path:'./',
-  print_download_result:false,
+  "download_path":"./",
+  "print_download_result":false,
 }
 
 ```
