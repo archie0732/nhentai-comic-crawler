@@ -1,4 +1,4 @@
-# nhentia-comic-crawler
+# nhentai-comic-crawler
 
 A program for downloading comics using simple `node.js`
 
@@ -6,7 +6,7 @@ A program for downloading comics using simple `node.js`
 
 ## Features
 
-* download comic on nhentia by use comic ID
+* download comic on nhentai by use comic ID
 
 ### Update Log (Current Status: Maintenance)
 
@@ -30,7 +30,7 @@ A program for downloading comics using simple `node.js`
 2. Install the necessary package from npm
 
 ```bash
-npm i nhentia_downloader
+npm i nhentai_downloader
 ```
 
 ### Quick Start (Copy the code below according to your needs after installing the package)
@@ -38,7 +38,7 @@ npm i nhentia_downloader
 * Download a single comic
 
 ```js
-const nweb_Downloader = require("nhentia_downloader");
+const nweb_Downloader = require("nhentai_downloader");
 const nweb = new nweb_Downloader();
 nweb.album_Downloader("#504189"); // Insert the comic ID, with or without the #
 
