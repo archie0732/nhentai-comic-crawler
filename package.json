@@ -5,7 +5,7 @@
     "node-fetch": "^3.3.2"
   },
   "name": "new_nhentai_downloader",
-  "version": "2.1.2",
+  "version": "2.2.1",
   "description": "u can easy to download nhentai comic by use this module!",
   "main": "src/index.js",
   "devDependencies": {},

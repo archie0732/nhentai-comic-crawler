@@ -36,6 +36,7 @@ npm i new_nhentai_downloader
 |2024-06-24|v2.0.5 ~ v2.0.6|Upadte English version document,and fix some promble|
 |2024-07-07|v2.0.7 ~ v2.0.8|fix the document name error|
 |2024-07-07|v2.1.0 ~ v2.1.2|Avoiding the use of classes to make the code more readable and simplified|
+|2024-07-25|v2.2.0 - v2.2.1|fix some promble and add jsDoc|
 
 ***
 
