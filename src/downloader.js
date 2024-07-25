@@ -1,83 +1,77 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
-const nweb_Information = require("./information");
+// downloader.js
 const fs = require("fs");
-let header =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0";
+const path = require("path");
+const axios = require("axios").default;
 
-async function download_One_Page(now_url, now_path) {
-  try {
-    const res = await fetch(now_url, { headers: { "User-Agent": header } });
+const headers = {
+  "User-Agent":
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0",
+};
 
-    if (!res.ok) {
-      throw new Error(`${res.status} not found page: ${now_url}`);
-    }
-
-    const raw = await res.arrayBuffer();
-    const Dp = `${now_path}`;
-
-    fs.writeFileSync(Dp, Buffer.from(raw));
-
-    return "ok";
-  } catch (error) {
-    throw new Error(`Error downloading page: ${now_url} - ${error.message}`);
-  }
-}
-
-async function album_Downloader(
-  infor = { title: "", downloadId: "", status: "" },
-  path = "./",
-  input_header = ""
+/**
+ * Downloads images from nhentai and returns an array of objects containing file paths and buffers.
+ *
+ * @param {string} download_key - The key used for constructing the image URLs.
+ * @param {number} pages - The number of pages to download.
+ * @param {string} fileType - The file extension for the images (e.g., 'jpg', 'png').
+ * @param {string} directory - The directory where the images will be saved.
+ * @param {function} updateProgress - A function to update the progress.
+ * @returns {Promise<{path: string, buffer: Buffer}[]>} - A promise that resolves to an array of objects containing file paths and buffers.
+ */
+async function alubm_downloader(
+  download_key,
+  pages,
+  fileType,
+  directory,
+  updateProgress
 ) {
-  header = input_header;
-  //get infor
-  console.log(`🎈 now download: ${infor.title}`);
-  if (infor.status === "✅ all correct!") {
-    // update now path
-    const invalidChars = /[\\/:*?"<>|]/g;
-    const nowPath = path + infor.title.replace(invalidChars, "");
-    // make dir
-    if (!fs.existsSync(nowPath)) {
-      fs.mkdirSync(nowPath, {
-        recursive: true,
+  const package = [];
+  for (let i = 1; i <= pages; i++) {
+    try {
+      let url = `https://i5.nhentai.net/galleries/${download_key}/${i}.${fileType}`;
+      const res = await axios.get(url, {
+        headers: headers,
+        responseType: "arraybuffer",
       });
-    }
-    // download page
-    for (let i = 1; i <= infor.pageCount; i++) {
-      const NowDownloadUrl = `https://i.nhentai.net/galleries/${infor.downloadId}/${i}${infor.fileFormat}`;
-      const NowName = nowPath + "/" + i + infor.fileFormat;
-
+      package.push({
+        path: path.join(directory, `${i}.${fileType}`),
+        buffer: res.data,
+      });
+    } catch (error) {
+      const anthorType = fileType === "jpg" ? "png" : "jpg";
       try {
-        const temp = await download_One_Page(NowDownloadUrl, NowName);
-        console.log(`🚩已完成: ${i}.jpg ，共 ${infor.pageCount} 頁`);
+        let url = `https://i5.nhentai.net/galleries/${download_key}/${i}.${anthorType}`;
+        const res = await axios.get(url, {
+          headers: headers,
+          responseType: "arraybuffer",
+        });
+        package.push({
+          path: path.join(directory, `${i}.${anthorType}`),
+          buffer: res.data,
+        });
       } catch (error) {
-        infor.status = "❌ error happen in downloading page!";
-        if (!infor["error-on"]) {
-          infor["error-on"] = [];
-        }
-        infor["error-on"].push(error);
-        console.log(error);
+        throw new Error(`Download error for ${url}: ${error.message}`);
       }
     }
-    if (infor.status == "✅ all correct!") {
-      console.log(`🔽 下載完成: ${path}${infor.title}/`);
-    } else {
-      console.log(`🔽 下載失敗: ${path}${infor.title}`);
+    // Call the progress update function
+    if (updateProgress) {
+      updateProgress(((i / pages) * 100).toFixed(2));
     }
-    //console.log(infor);
-    return infor;
-  } else {
-    console.log(infor.status);
-    return infor;
   }
-}
-/*
-async function test() {
-  const a = await nweb_Information("#504189", header);
-  const c = await album_Downloader(a);
-  console.log(c);
+  return package;
 }
 
-test();
-*/
-module.exports = album_Downloader;
+function comicWriteFile(files) {
+  files.forEach(({ path, buffer }) => {
+    try {
+      fs.writeFileSync(path, buffer);
+    } catch (error) {
+      throw new Error(`error happen when writing file ${path}`);
+    }
+  });
+}
+
+module.exports = {
+  comicWriteFile,
+  alubm_downloader,
+};

@@ -1,77 +1,40 @@
-const downloader = require("./downloader");
-const information = require("./information");
+const path = require("path");
+const { controDownload } = require("./contro");
+const fs = require("fs");
 
-async function comic_download(ids = [], default_options = {}) {
-  const options = {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0",
-      ...default_options.header,
-    },
-    download_path: default_options.download_path || "./",
-    print_downloader_result:
-      default_options.print_downloader_result !== undefined
-        ? default_options.print_downloader_result
-        : false,
-  };
+/**
+ *
+ * @param {string | string[]} id
+ * @param {object} option
+ * @param {string} option.path
+ * @param {boolean} option.reports
+ */
+async function downlaod(id, option) {
+  const ids = Array.isArray(id) ? id : [id];
 
-  try {
-    if (Array.isArray(ids) && ids.length > 0) {
-      // 如果 ids 是陣列，處理每個元素
-      for (const id of ids) {
-        await comic_download(id, options);
-      }
-    } else {
-      const comic_info = await information(ids, options.headers);
-      const download_data = await downloader(
-        comic_info,
-        options.download_path,
-        options.headers
-      );
-      if (options.print_downloader_result) {
-        console.log(download_data);
-      }
+  const downlaod_report = [];
+  let failNum = 0;
+  for (let i = 0; i < ids.length; i++) {
+    process.stdout.write(`下載進度 ${i + 1}/${ids.length}\n`);
+    const res = await controDownload(ids[i], option.path);
+    if (res) {
+      failNum++;
+      downlaod_report.push(res);
     }
-  } catch (error) {
-    console.error(`Error in nweb_controller: ${error.message}`);
-    throw error;
+    process.stdout.moveCursor(0, -1);
+    process.stdout.clearLine();
+    process.stdout.cursorTo(0);
+  }
+
+  console.log(`所有進度都已下載完成，共有${failNum}/${ids.length}個下載錯誤`);
+
+  if (downlaod_report && option.reports && downlaod_report.length) {
+    const filePath = path.join(option.path, `report.json`);
+    fs.writeFileSync(filePath, JSON.stringify(downlaod, null, 2), "utf-8");
+    console.log(`可以查看下載報告: ${filePath}`);
+  } else if (option.reports) {
+    console.log(`下載漫畫時未發現任何問題，故沒有錯誤報告`);
   }
 }
 
-async function about_comic(
-  id,
-  headers = {
-    "User-Agent":
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0",
-  }
-) {
-  try {
-    const res = await information(id, headers);
-    console.log(res);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-function option_show(s = "") {
-  switch (s) {
-    case "about_comic":
-      console.log({
-        headers: {
-          "User-Agent": "",
-        },
-      });
-      break;
-    case "comic_download":
-      console.log({
-        headers: { "User-Agent": "" },
-        download_path: "./",
-        print_downloader_result: false,
-      });
-
-    default:
-      break;
-  }
-}
-
-module.exports = { comic_download, about_comic, option_show };
+downlaod("#298472", { path: "./comic", reports: true });
