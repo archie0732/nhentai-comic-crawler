@@ -1,5 +1,8 @@
-let a = "skhdouhaisduh";
+function getToday() {
+  const date = new Date();
+  const m = date.getMonth() + 1;
+  const d = date.getDate();
+  return m.toString() + d.toString();
+}
 
-a += 823980;
-
-console.log(a);
+console.log(getToday());

@@ -1,10 +1,11 @@
-import { existsSync, mkdirSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 import { saveImage } from "./downloader";
 import ora, { type Ora } from "ora";
 
 import axios from "axios";
 import chalk from "chalk";
+import { archieHistory } from "../type/archieHistory";
 
 export const DefaultHeader = {
   "User-Agent":
@@ -76,36 +77,27 @@ export class Doujin {
   }
 
   async download(targetPath: string) {
-    const folderPath = join(targetPath, `[${this.id}] ${this.title.pretty}`).replace(/[/<>:"\|?*]/g, "_");
-    
+    const folderPath = join(targetPath, `[${this.id}] ${this.title.pretty}`).replace(/[/<>:."\|?*]/g, "_");
+
     mkdirSync(folderPath, { recursive: true });
 
     const spinner = ora(
-      `${chalk.cyanBright(`[0/${this.num_pages}]`)} ${chalk.yellowBright(
-        this.id
-      )} ${this.title.pretty}`
+      `${chalk.cyanBright(`[0/${this.num_pages}]`)} ${chalk.yellowBright(this.id)} ${this.title.pretty}`
     ).start();
 
-    let error: { page: number; error: any; }[] = [];
+    let error: { page: number; error: any }[] = [];
 
     for (const index in this.images.pages) {
-      spinner.text = `${chalk.cyanBright(
-        `[${+index + 1}/${this.num_pages}]`
-      )} ${chalk.yellowBright(this.id)} ${this.title.pretty}`;
+      spinner.text = `${chalk.cyanBright(`[${+index + 1}/${this.num_pages}]`)} ${chalk.yellowBright(this.id)} ${
+        this.title.pretty
+      }`;
 
       const page = this.images.pages[index];
-      const extension =
-        page.t == ImageFormat.Png
-          ? "png"
-          : page.t == ImageFormat.Jpg
-          ? "jpg"
-          : "gif";
-          
-      const url = `https://i3.nhentai.net/galleries/${this.media_id}/${
-        +index + 1
-      }.${extension}`;
+      const extension = page.t == ImageFormat.Png ? "png" : page.t == ImageFormat.Jpg ? "jpg" : "gif";
 
-      const filename = `${index + 1}.${extension}`;
+      const url = `https://i3.nhentai.net/galleries/${this.media_id}/${+index + 1}.${extension}`;
+
+      const filename = `${+index + 1}.${extension}`;
       const file = join(folderPath, filename);
 
       if (existsSync(file)) continue;
@@ -113,7 +105,7 @@ export class Doujin {
       await saveImage(url, file).catch((e) => {
         error.push({
           page: +index + 1,
-          error: e
+          error: e,
         });
       });
     }
@@ -121,11 +113,20 @@ export class Doujin {
     if (error.length) {
       spinner.warn();
       for (const e of error) {
-        console.error(chalk.redBright(`\t下載第 ${e.page} 頁時發生錯誤：${e.error}`))
+        console.error(chalk.redBright(`\t下載第 ${e.page} 頁時發生錯誤：${e.error}`));
       }
     } else {
       spinner.succeed();
     }
+
+    const localData: archieHistory = JSON.parse(readFileSync("./res/history.json", "utf-8"));
+    localData.list.push({
+      title: this.title.pretty,
+      id: this.id.toString(),
+      date: getToday(),
+    });
+
+    writeFileSync("./res/history.json", JSON.stringify(localData, null, 2));
   }
 }
 
@@ -145,4 +146,11 @@ export async function fetchDoujin(id: string | number): Promise<Doujin> {
   });
 
   return new Doujin(response.data);
+}
+
+function getToday() {
+  const date = new Date();
+  const m = date.getMonth() + 1;
+  const d = date.getDate();
+  return m.toString() + d.toString();
 }

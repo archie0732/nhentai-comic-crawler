@@ -1,8 +1,6 @@
 import { writeFileSync } from "fs";
-import { join } from "path";
-import { DefaultHeader } from "./information";
 
-import axios from "axios";
+import fetch from "node-fetch";
 
 export const saveImage = async (url: string, path: string) => {
   let counter = 0;
@@ -13,9 +11,10 @@ export const saveImage = async (url: string, path: string) => {
         await new Promise((f) => setTimeout(f, 1_500));
       }
 
-      const response = await axios.get(url);
-
-      writeFileSync(path, response.data);
+      const response = await fetch(url);
+      const raw = await response.arrayBuffer();
+      const buffer = Buffer.from(raw);
+      writeFileSync(path, buffer);
       return false;
     } catch (error) {
       if (counter > 5) throw error;

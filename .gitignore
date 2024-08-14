@@ -2,5 +2,5 @@ node_modules/
 
 src/update_test.js
 
-resource/
 comics/
+res/
