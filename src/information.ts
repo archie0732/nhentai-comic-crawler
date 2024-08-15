@@ -119,7 +119,10 @@ export class Doujin {
       spinner.succeed();
     }
 
+    //write histroy file
     const localData: archieHistory = JSON.parse(readFileSync("./res/history.json", "utf-8"));
+    localData["list-count"]++;
+    localData["lastDate"] = getToday();
     localData.list.push({
       title: this.title.pretty,
       id: this.id.toString(),

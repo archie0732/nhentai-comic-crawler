@@ -1,6 +1,7 @@
 export interface archieHistory {
   username: string;
   lastDate: string;
+  "list-count": number;
   list: archieList[];
 }
 
