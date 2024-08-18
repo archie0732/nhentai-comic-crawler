@@ -51,5 +51,5 @@ export async function archieDownload(alubm_id: string | number | (string | numbe
     }
   }
 
-  console.log(`👾 全部庁列下載完成 ${fail}/${ids.length}本失敗，祝您看漫愉快`);
+  console.log(`👾 全部庁列下載完成，共 ${fail} 本下載失敗，祝您看漫愉快`);
 }
