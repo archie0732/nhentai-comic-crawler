@@ -1,10 +1,19 @@
-import { archieDownload } from "../src";
+import { fetchSearch } from "@/search/searchAPI";
 
-describe("download()", () => {
-  it("should error illegal id list", async () => {
-    await expect(archieDownload(["asdf"], "")).rejects.toThrow();
+describe("serachAPI", () => {
+  it("return doujin list index 0's meadia id", async () => {
+    expect((await fetchSearch("yan-yam")).lastDojin.media_id).toBe("3045118");
   });
-  it("should download doujins", async () => {
-    await expect(archieDownload(["500451"], "comics")).resolves.toBeUndefined();
+
+  it("i donnot know", () => {
+    expect(/\d/.test("999999")).toBe(true);
+  });
+
+  it("i donnot know 2", () => {
+    expect(/^\d+$/.test("hshadhh")).toBe(false);
+  });
+
+  it("i donnot know 3", () => {
+    expect(/^\d+$/.test("hudshakhd0")).toBe(false);
   });
 });
