@@ -2,7 +2,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 import { saveImage } from "./download";
 
-import type { archieHistory } from "@/type/a7history";
+import type { archieHistory } from "@/localSave/a7history";
 
 import ora from "ora";
 import axios from "axios";
@@ -77,38 +77,26 @@ export class Doujin {
     this.num_favorites = data["num_favorites"];
   }
 
-  async download(targetPath: string) {
-    const folderPath = join(
-      targetPath,
-      `[${this.id}] ${this.title.pretty}`
-    ).replace(/[/<>:."\|?*]/g, "_");
+  async download(targetPath: string, counter: string = "👾", history: boolean = true) {
+    const folderPath = join(targetPath, `[${this.id}] ${this.title.pretty}`).replace(/[/<>:."\|?*]/g, "_");
 
     mkdirSync(folderPath, { recursive: true });
 
     const spinner = ora(
-      `${chalk.cyanBright(`[0/${this.num_pages}]`)} ${chalk.yellowBright(
-        this.id
-      )} ${this.title.pretty}`
+      `${counter}. ${chalk.cyanBright(`[0/${this.num_pages}]`)} ${chalk.yellowBright(this.id)} ${this.title.pretty}`
     ).start();
 
     let error: { page: number; error: any }[] = [];
 
     for (const index in this.images.pages) {
-      spinner.text = `${chalk.cyanBright(
-        `[${+index + 1}/${this.num_pages}]`
-      )} ${chalk.yellowBright(this.id)} ${this.title.pretty}`;
+      spinner.text = `${counter}. ${chalk.cyanBright(`[${+index + 1}/${this.num_pages}]`)} ${chalk.yellowBright(
+        this.id
+      )} ${this.title.pretty}`;
 
       const page = this.images.pages[index];
-      const extension =
-        page.t == ImageFormat.Png
-          ? "png"
-          : page.t == ImageFormat.Jpg
-          ? "jpg"
-          : "gif";
+      const extension = page.t == ImageFormat.Png ? "png" : page.t == ImageFormat.Jpg ? "jpg" : "gif";
 
-      const url = `https://i3.nhentai.net/galleries/${this.media_id}/${
-        +index + 1
-      }.${extension}`;
+      const url = `https://i3.nhentai.net/galleries/${this.media_id}/${+index + 1}.${extension}`;
 
       const filename = `${+index + 1}.${extension}`;
       const file = join(folderPath, filename);
@@ -126,18 +114,16 @@ export class Doujin {
     if (error.length) {
       spinner.warn();
       for (const e of error) {
-        console.error(
-          chalk.redBright(`\t下載第 ${e.page} 頁時發生錯誤：${e.error}`)
-        );
+        console.error(chalk.redBright(`\t下載第 ${e.page} 頁時發生錯誤：${e.error}`));
       }
     } else {
       spinner.succeed();
     }
 
     //write histroy file
-    const localData: archieHistory = JSON.parse(
-      readFileSync("./res/history.json", "utf-8")
-    );
+    if (!history) return;
+
+    const localData: archieHistory = JSON.parse(readFileSync("./res/history.json", "utf-8"));
     localData["list-count"]++;
     localData["lastDate"] = getToday();
     localData.list.push({
@@ -156,7 +142,7 @@ export class Doujin {
  * @param {string} id - The nhentai comic ID.
  * @returns {Promise<Doujin>} - An object containing doujin information.
  */
-export async function fetchDoujin(id: string | number): Promise<Doujin> {
+export async function doujinAPI(id: string | number): Promise<Doujin> {
   const url = `https://nhentai.net/api/gallery/${id}`;
 
   const response = await axios.get<Doujin>(url, {

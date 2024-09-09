@@ -13,7 +13,7 @@ export class SearchList {
   }
 }
 
-export const fetchSearch = async (keyword: string) => {
+export const searchAPI = async (keyword: string) => {
   const url = `https://nhentai.net/api/galleries/search?query=${keyword}`;
 
   const resp = await fetch(url);

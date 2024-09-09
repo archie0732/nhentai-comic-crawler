@@ -1,4 +1,2 @@
-import { Doujin, fetchDoujin } from "./doujin";
-import { saveImage } from "./download";
-
-export { Doujin, fetchDoujin, saveImage };
+export * from "./doujin";
+export * from "./download";

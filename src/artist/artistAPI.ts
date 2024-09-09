@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 
 import { Doujin } from "@/doujin/";
+import { searchKeyword } from "./getArtistId";
 
 export class ArtistList {
   doujinList: Doujin[];
@@ -13,13 +14,15 @@ export class ArtistList {
   }
 }
 
-export const fetchArtistAPI = async (artistId: string) => {
-  if (!/[^\d+$]/.test(artistId)) throw new Error("artist id error");
+export const artistAPI = async (artistId: string) => {
+  let id = Number(artistId);
 
-  const url = `https://nhentai.net/api/artist/${artistId}`;
+  if (isNaN(id)) id = Number(await searchKeyword(artistId));
+
+  const url = `https://nhentai.net/api/galleries/tagged?tag_id=${artistId}`;
 
   const resp = await fetch(url);
-  if (!resp.ok) throw `http error, code: ${resp.status}`;
+  if (!resp.ok) throw `https error, code: ${resp.status}`;
 
   const json = (await resp.json()) as Record<string, any>;
 
