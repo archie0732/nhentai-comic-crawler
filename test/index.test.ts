@@ -16,6 +16,8 @@ describe("serachAPI", () => {
   });
 
   test("it will throw 404 when search artist id", async () => {
-    await expect(searchKeyword("jasodjoposd")).rejects.toThrow("search artist id error: 404");
+    await expect(searchKeyword("jasodjoposd")).rejects.toThrow(
+      "search artist id error: 404"
+    );
   });
 });
