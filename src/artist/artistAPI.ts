@@ -19,10 +19,11 @@ export const artistAPI = async (artistId: string) => {
 
   if (isNaN(id)) id = Number(await searchKeyword(artistId));
 
-  const url = `https://nhentai.net/api/galleries/tagged?tag_id=${artistId}`;
+  const url = `https://nhentai.net/api/galleries/tagged?tag_id=${id}`;
 
   const resp = await fetch(url);
-  if (!resp.ok) throw `https error, code: ${resp.status}`;
+  if (!resp.ok)
+    throw `https error when get artist api, status code: ${resp.status}`;
 
   const json = (await resp.json()) as Record<string, any>;
 
