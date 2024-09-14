@@ -37,8 +37,8 @@ export const dl = async (album: number | string | Array<string>, dlPath: string 
       errFlag++;
     }
   }
-
-  console.log(`🎉 全部下載完成，共 ${errFlag}/${albums.length} 本失敗`);
+  if (errFlag) console.log(`🎉 全部下載完成，共 ${errFlag}/${albums.length} 本失敗`);
+  else console.log("`🎉 全部下載完成，未發現任何錯誤");
 };
 
 const checkDl = (title: string, id: string, local: Map<string, archieList> | null) => {
