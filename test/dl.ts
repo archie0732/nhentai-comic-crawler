@@ -33,3 +33,5 @@ nAPI
     "./comics/914"
   )
   .catch(console.error);
+
+nAPI.artistAPI;

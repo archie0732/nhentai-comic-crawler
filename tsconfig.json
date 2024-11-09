@@ -33,5 +33,5 @@
       "noUnusedParameters": true,
       "noPropertyAccessFromIndexSignature": true,
       "forceConsistentCasingInFileNames": true
-    },"exclude": ["test"]
+    },"exclude": ["test","dist","types"]
   }

@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-import { Doujin } from "@/doujin/";
+import { Doujin } from "../doujin/";
 
 export class SearchList {
   doujinList: Doujin[];

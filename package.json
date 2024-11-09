@@ -2,12 +2,19 @@
   "name": "new_nhentai_downloader",
   "version": "2.3.10",
   "description": "u can easy to download nhentai comic by use this module!",
-  "main": "src/index.js",
+  "module": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "type": "module",
   "destartendencies": {},
   "scripts": {
     "test": "jest",
-    "start": "bun ./run"
+    "dev": "bun ./src/index.ts",
+    "build": "bun build --target=node ./src/index.ts --outfile=dist/index.js && bun run build:declaration",
+    "build:declaration": "tsc --emitDeclarationOnly --project tsconfig.types.json",
+    "postbuild": "rimraf tsconfig.types.tsbuildinfo"
   },
+  "files": ["dist/*.js", "dist/*.d.js"],
   "keywords": [
     "nhentai",
     "nhentai api",
@@ -31,7 +38,8 @@
     "cheerio": "^1.0.0-rc.12",
     "node-fetch": "^3.3.2",
     "ora": "^8.0.1",
-    "pm2": "^5.4.2"
+    "pm2": "^5.4.2",
+    "rimraf": "^6.0.1"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",

@@ -8,18 +8,17 @@ A program for downloading comics using simple `node.js`
 >
 > now u can use the new version to download comic!!
 
-```bash
-# the old command,do not use this
-npm i nhentia_downloader
-```
-
 * use the new command
 
 ```bash
 npm i new_nhentai_downloader
 ```
 
-[the Chinese document / 中文版文檔](./chinese_readme.md)
+or use bun
+
+```bash
+bun add new_nhentai_downloader
+```
 
 ## Features
 
@@ -37,6 +36,7 @@ npm i new_nhentai_downloader
 |2024-07-07|v2.0.7 ~ v2.0.8|fix the document name error|
 |2024-07-07|v2.1.0 ~ v2.1.2|Avoiding the use of classes to make the code more readable and simplified|
 |2024-07-25|v2.2.0 - v2.2.1|fix some promble and add jsDoc|
+|2024-11-09|v2.2.1 - v2.3.0|fix some bug and update markdown|
 
 ***
 
@@ -55,77 +55,64 @@ npm i new_nhentai_downloader
 
 ### Quick Start (Copy the code below according to your needs after installing the package)
 
-* Download a single comic
+import this package
+
+for js
 
 ```js
-const nweb = require("new_nhentai_downloader");
-nweb.comic_download("#504189"); // Insert the comic ID, with or without the #
-
+const nhentai = require('new_nehntai_downloader')
 ```
-  
+
+for ts
+
+```ts
+import nehntai from 'new_nehentai_downloader'
+```
+
+* Just download single comic
+
+```js
+const nhentai = require("new_nhentai_downloader");
+nhentai.dl('comicID','dlPath')
+```
+
 * Download multiple comics
 
 ```js
-const nweb = require('new_nhentai_downloader');
+const nhentai = require('new_nhentai_downloader');
 const albums = ['#504189',"#300800"]// Both " and ' can be used
-nweb.comic_download(albums)
+const path = './my_comic'
+nhentai.dl(albums,path)
 ```
 
 or,u can do this
 
 ```js
-const nweb = require('new_nhentai_downloader');
-nweb.comic_download(['#504189','#300800']);
+const nhentai = require('new_nhentai_downloader');
+nhentai.dl(['#504189','#300800'],'./my_comic');
 ```
 
-### Customizing the Package
+### Get API use this package
 
-Currently available options:
-
-* 1. custom download path  
+get doujin api(information)
 
 ```js
-nweb.comic_downloade('#504189',{download_path:'./a/b/'});
+nhentai.doujinAPI('1234').then(console.log).catch(console.error);
 ```
 
-* 2. Change user agent
+search artist or doujin key word
 
 ```js
-nweb.comic_download('#504189',{headers:'<u headers>'});
+nhentai.searchAPI('waterring').then(console.log).catch(console.error);
 ```
 
-of cause, you also can do this:
+get artist's all doujins
 
 ```js
-nweb.comic_download('504189',{download_path:'<path>',headers:'<headers>'});
+nehntai_artistAPI('waterring').then(console.log).catch(console.error);
 ```
 
-### get comic information
-
-maybe you just want to know about comic basic information:
-
-```js
-nweb.about_comic('#11111');
-```
-
-* More features will be added to `option`, to view `options`
-
-```js
-nweb.option_show("<u want to know the option's method name>");
-```
-
-about the `comic_download` method option:
-
-```json
-{
-  "headers":{
-    "User-Agent":"",
-  },
-  "download_path":"./",
-  "print_download_result":false,
-}
-
-```
+have fun
 
 ### Miscellaneous
 
