@@ -37,6 +37,7 @@ bun add new_nhentai_downloader
 |2024-07-07|v2.1.0 ~ v2.1.2|Avoiding the use of classes to make the code more readable and simplified|
 |2024-07-25|v2.2.0 - v2.2.1|fix some promble and add jsDoc|
 |2024-11-09|v2.2.1 - v2.3.0|fix some bug and update markdown|
+|2024-11-09|v2.3.0 - 2.3.11|update markdown|
 
 ***
 
@@ -60,7 +61,7 @@ import this package
 for js
 
 ```js
-const nhentai = require('new_nehntai_downloader')
+const nhentai = require('new_nehntai_downloader').default;
 ```
 
 for ts
@@ -72,14 +73,14 @@ import nehntai from 'new_nehentai_downloader'
 * Just download single comic
 
 ```js
-const nhentai = require("new_nhentai_downloader");
+const nhentai = require("new_nhentai_downloader").default;
 nhentai.dl('comicID','dlPath')
 ```
 
 * Download multiple comics
 
 ```js
-const nhentai = require('new_nhentai_downloader');
+const nhentai = require('new_nhentai_downloader').default;
 const albums = ['#504189',"#300800"]// Both " and ' can be used
 const path = './my_comic'
 nhentai.dl(albums,path)
@@ -88,7 +89,7 @@ nhentai.dl(albums,path)
 or,u can do this
 
 ```js
-const nhentai = require('new_nhentai_downloader');
+const nhentai = require('new_nhentai_downloader').default;
 nhentai.dl(['#504189','#300800'],'./my_comic');
 ```
 

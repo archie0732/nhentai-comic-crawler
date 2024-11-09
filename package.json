@@ -1,6 +1,6 @@
 {
   "name": "new_nhentai_downloader",
-  "version": "2.3.10",
+  "version": "2.3.11",
   "description": "u can easy to download nhentai comic by use this module!",
   "module": "src/index.ts",
   "main": "dist/index.js",
